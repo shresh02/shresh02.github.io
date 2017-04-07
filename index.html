@@ -1,232 +1,277 @@
 <!DOCTYPE html>
-<head>
-  <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
-  <!-- <link rel="stylesheet" href="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.css"> -->
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
-<!--   <link rel="stylesheet" href="src/radar-chart.css">
-  <link rel="stylesheet" href="src/radar-main.css">
-  <link rel="stylesheet" href="src/pc-style.css"> -->
-  <link rel="shortcut icon" href=http://www.freshdesignweb.com/wp-content/themes/fv28/images/icon.ico />
-  <link rel="stylesheet" type="text/css" href="style.css" media="all" />
-  <script type="text/javascript" src="src/radar-chart.js"></script>
-  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-  <script src="http://d3js.org/d3.v3.js"></script>
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
-  <link rel="stylesheet" href="src/radar-chart.css">
-  <link rel="stylesheet" href="src/radar-main.css">
-  <link rel="shortcut icon" href=http://www.freshdesignweb.com/wp-content/themes/fv28/images/icon.ico />
-  <link rel="stylesheet" type="text/css" href="style.css" media="all" />
-  <script type="text/javascript" src="src/radar-chart.js"></script>
-  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-  <script src="http://d3js.org/d3.v3.js"></script>
-  <!-- // <script src="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.js"></script> -->
-
+<meta charset="utf-8">
 <style>
-/* code for this section from D3 examples in class */
-body {
-  padding: 20px;
+
+svg {
+  font: 10px sans-serif;
 }
+
+.background path {
+  fill: none;
+  stroke: #ddd;
+  shape-rendering: crispEdges;
+}
+
+.foreground path {
+  fill: none;
+  /*stroke: steelblue;*/
+}
+
+.brush .extent {
+  fill-opacity: .3;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}
+
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+  cursor: move;
+}
+
 </style>
-
-<style>
-h1{
-  font-family: 'Oswald', tahoma;
-  font-size: 20px;
-  margin-top: 50px;
-  margin-left: 100px;
-  margin-bottom: 3px;
-}
-
-h5{
-  font-family: 'Oswald', tahoma;
-  font-size: 15px;
-  margin-top: 2px;
-  margin-left: 100px;
-  display: inline-block;
-}
-
-.radar-chart .area {
-  fill-opacity: 0.7;
-}
-.radar-chart.focus .area {
-  fill-opacity: 0.3;
-}
-.radar-chart.focus .area.focused {
-  fill-opacity: 0.9;
-}
-
-/*started as a column instead of row, hence name, but this is a container for mouseover pills*/
-#slide_col{
-  width: 885px;
-  margin-left: 100px;
-  margin-top: 10px;
-  margin-bottom: 50px;
-}
-
-
-.active{
-  background-color: white;
-}
-
-/*changes color of pills on hover*/
-/*div.year:hover{
-  background-color: white;
-}*/
-
-button{
-  display: inline-block;
-  font-family: 'Oswald', tahoma;
-  cursor: pointer;
-  margin: 1px;
-  border-radius: 2px;
-  text-decoration: none;
-  padding: 5px;
-  font-size: 15px;
-  background-color: #FFF;
-  border: 0px solid white;
-}
-
-button:hover{
-  background-color: #5d88f4;
-}
-</style>
-</head>
 <body>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="http://d3js.org/d3.v3.js"></script>
-<!-- <script src="https://rawgit.com/alangrafu/radar-chart-d3/master/src/radar-chart.min.js"></script> -->
-
-
-<h1>Radar Chart by Michelle and Shrestha</h1>
-  <h5> We have calculated the average scores of the schools within each country, from 2011-2016.
-    <br> You can add a country by clicking on the buttons below
-    <br> For best results, view in chrome and remove countries in the same order you added them.</h5>
-  <!-- display all buttons here -->
-  <div id="buttons"><button><li id="refresh"><a data-country= data-action="1" class="tag" type="button" id="button">Refresh</a></li></button><br></div><br>
-  <!-- for radar chart -->
-  <div class='chart-container'></div></br></br>
-
-
-</body>
-
+<h1> Parallel Coordinates -  Michelle and Shrestha </h1>
+<script src="https://d3js.org/d3.v3.min.js"></script>
 <script>
-/* code for this section from GitOnion example and bl.oc example*/
-  // setting the default configuration for radar
-  RadarChart.defaultConfig.color = function(i) { c = colorArray ; return c[i];}
-  //var colorScale = d3.scale.category20();
-  //RadarChart.defaultConfig.colors = colorScale;
-  RadarChart.defaultConfig.radius = 3;
-  RadarChart.defaultConfig.w = 450;
-  RadarChart.defaultConfig.h = 450;
-  RadarChart.defaultConfig.levels = 10;
-  RadarChart.defaultConfig.tooltipFormatClass = function(d){
-    // console.log(d)
-    var string = String(d.className) + ", " + String(d.axes[0].axis) + ":" + String(d.axes[0].value) + ", " + String(d.axes[1].axis) + ":" + String(d.axes[1].value) + ", " + String(d.axes[2].axis) + ":" + String(d.axes[2].value) + ", " + String(d.axes[3].axis) + ":" + String(d.axes[3].value) + ", " + String(d.axes[4].axis) + ":" + String(d.axes[4].value);
-    return string
-  };
+// main structure of code from https://bl.ocks.org/jasondavies/1341281
 
-  // declaring needed variables
-  var colorArray = [];
-  var colorDict = {};
-  var radar_data = [];
-  var dict = {};
-  var finalData = [];
-  var chart = RadarChart.chart();
-  var cfg = chart.config(); // retrieve default config
-  var svg = d3.select('body').append('svg').classed('svg', 1).attr('width', cfg.w + 50).attr('height', cfg.h + cfg.h / 4);
-  var colorIndex = 0;
-  // read the file when document is ready
-  $(document).ready(function() {
-    $.ajax({
-      type: "GET",
-      url: "radardata.csv",
-      dataType: "text",
-      success: function(data) {extractData(data);}
+var margin = {top: 30, right: 100, bottom: 10, left: 70},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+
+
+var x = d3.scale.ordinal().rangePoints([0, width], 1),
+    y = {},
+    dragging = {};
+
+var line = d3.svg.line(),
+    axis = d3.svg.axis().orient("left"),
+    background,
+    foreground;
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+var color = d3.scale.ordinal()
+  .domain(['Australia','Austria','Belgium','Canada','China','Denmark','Egypt','Finland','France','Germany','Hong Kong','Japan','Netherlands','New Zealand','Norway','Republic of Ireland','Singapore','South Africa','South Korea','Spain','Sweden','Switzerland','Taiwan','Turkey','United Kingdom','United States of America'])
+  .range(['green','black','black','blue', 'red','black','brown','black','black','black','black','red','red','black','black','black','red','brown','red','black','black','black','red','black','black','blue'])
+
+d3.csv("timesData.csv", function(error, cars) {
+
+  // Extract the list of dimensions and create a scale for each.
+  // x.domain(dimensions = d3.keys(cars[0]).filter(function(d) {
+  //   return  (y[d] = d3.scale.linear()
+  //       .domain(d3.extent(cars, function(p) { return +p[d]; }))
+  //       .range([height, 0]))
+  // }));
+
+  x.domain(dimensions = d3.keys(cars[0]).filter(function(d) {
+    if(d === "country") {
+        y[d] = d3.scale.ordinal()
+          .domain(cars.map(function(p) { return p[d]; }).sort().reverse())
+          .rangePoints([height, 0]);
+    }
+    else if (d === "international"){
+      return false;
+    }
+    else if (d === "female_male_ratio"){
+      return false;
+    }
+    else if (d === "num_students"){
+      return false;
+    }
+    else if (d === "university_name"){
+      return false;
+    }
+    else if (d === "total_score"){
+      return false;
+    }
+    else if (d === "international_students"){
+      return false;
+    }
+    else if (d === "student_staff_ratio"){
+      return false;
+    }
+    else if (d === "world_rank"){
+      y[d] = d3.scale.linear()
+          .domain(d3.extent(cars, function(p) { return +p[d]; }).sort().reverse())
+          .range([height, 0]);
+    }
+    else if (d === "year"){
+      return false;
+    }
+    else{
+        y[d] = d3.scale.linear()
+          .domain(d3.extent(cars, function(p) { return +p[d]; }))
+          .range([height, 0]);
+    }
+    return true;
+  }));
+
+    
+
+  // Add grey background lines for context.
+ background = svg.append("g")
+      .attr("class", "background")
+    .selectAll("path")
+      .data(cars)
+    .enter().append("path")
+      .attr("d", path);
+
+
+  // Add blue foreground lines for focus.
+  foreground = svg.append("g")
+    .attr("class", "foreground")
+    .selectAll("path")
+    .data(cars)
+    .enter().append("path")
+    .attr("d", path)
+    .attr("stroke", function(d) {
+        var continent = d.country;
+        return color(continent);
+      })
+    // .attr('stroke', function(d) { return color(d.label); });
+
+
+  // Add a group element for each dimension.
+  var g = svg.selectAll(".dimension")
+      .data(dimensions)
+    .enter().append("g")
+      .attr("class", "dimension")
+      .attr("transform", function(d) { return "translate(" + x(d) + ")"; })
+      .call(d3.behavior.drag()
+        .origin(function(d) { return {x: x(d)}; })
+        .on("dragstart", function(d) {
+          dragging[d] = x(d);
+          background.attr("visibility", "hidden");
+        })
+        .on("drag", function(d) {
+          dragging[d] = Math.min(width, Math.max(0, d3.event.x));
+          foreground.attr("d", path);
+          dimensions.sort(function(a, b) { return position(a) - position(b); });
+          x.domain(dimensions);
+          g.attr("transform", function(d) { return "translate(" + position(d) + ")"; })
+        })
+        .on("dragend", function(d) {
+          delete dragging[d];
+          transition(d3.select(this)).attr("transform", "translate(" + x(d) + ")");
+          transition(foreground).attr("d", path);
+          background
+              .attr("d", path)
+            .transition()
+              .delay(500)
+              .duration(0)
+              .attr("visibility", null);
+        }));
+
+  // Add an axis and title.
+  g.append("g")
+      .attr("class", "axis")
+      .each(function(d) { d3.select(this).call(axis.scale(y[d])); })
+    .append("text")
+      .style("text-anchor", "middle")
+      .attr("y", -9)
+      .text(function(d) { return d; });
+
+  // Add and store a brush for each axis.
+
+    g.append("g")
+      .attr("class", "brush")
+      .each(function(d) {
+        d3.select(this).call(y[d].brush = d3.svg.brush().y(y[d]).on("brushstart", brushstart).on("brush", brush));
+      })
+    .selectAll("rect")
+      .attr("x", -8)
+      .attr("width", 50);
+
+      var legendRectSize = 10;
+      var legendSpacing = 10;
+      var legend = d3.select('svg')
+    .append("g")
+    .selectAll("g")
+    .data(color.domain())
+    .enter()
+    .append('g')
+      .attr('class', 'legend')
+      .attr('transform', function(d, i) {
+        var height = legendRectSize;
+        var x = 800;
+        var y = (i * height) + 50;
+        return 'translate(' + x + ',' + y + ')';
     });
-  });
-  // generate 50 random color
-  $(document).ready(function() {
-    for (i=0; i<50; i++)
-      colorArray.push("#" + ((1 << 24) * Math.random() | 0).toString(16))
-  });
-  //function to process csv data and prepare the data structure
-  function extractData(csv) {
-    var lines = csv.split(/\r\n|\n|\r/); //spliting lines
-    for (var i=0; i<lines.length - 1; i++) {
-        var data = lines[i].split(","); //splitting lines into elements
-        displayData(String(data[0]));
-        dict[data[0]] = i; //storing key value pair of country name and index for searches
-        var _object = {};
-        _object.className = String(data[0]);
-        axes_list = []
-        axes_list.push({ axis: "teaching", value: parseFloat(data[1])});
-        axes_list.push({ axis: "overall", value: parseFloat(data[2])});
-        axes_list.push({ axis: "research", value: parseFloat(data[3])});
-        axes_list.push({ axis: "citations", value: parseFloat(data[4])});
-        axes_list.push({ axis: "income", value: parseFloat(data[5])});
-        _object.axes = axes_list
-        radar_data.push(_object)
-    }
-  }
-  //take action when user clicks on buttons
-  $("#buttons").on('click', '#button', function() {
-      if (this.getAttribute("data-action") == "1") {
-        $(this).css('color', 'white');
-        addRadar(this.getAttribute("data-country"));
-        // colorDict[$(this).text()] = colorIndex;
-        //colorArray.push(String($("polygon")[finalData.length - 1 ].getAttribute('style').substring(8, 25)));
-        // index = colorDict[$(this).text()]
-        $(this).css('background-color', colorArray[colorIndex]);
-        colorIndex++;
-        this.setAttribute("data-action", "2");
-      } else {
-        $(this).css('background-color', '#f2f2f3');
-        $(this).css('color', '#778187');
-        // $("a").each(function(){
-        //   alert($(this).children().css('background-color)');
-        //   $(this).children().css('background-color', colorArray[$(this).text()]);
-        // });
-        removeRadar(this.getAttribute("data-country"));
-        //colorArray.pop();
-        this.setAttribute('data-action', "1");
-        colorIndex--;
-      }
-  });
 
-  // refresh buttons for user to refresh
-  $("#refresh").on('click', '#button', function() {
-    location.reload();
-  });
-  // function for adding a new data onto radar chart
-  function addRadar(country) {
-    index = dict[country];
-    finalData.push(radar_data[index])
-    displayRadar();
-  }
-  // function for removing a new data onto radar chart
-  function removeRadar(country) {
-    for (i=0; i< finalData.length; i++) {
-      if (finalData[i].className == country) {
-        finalData.splice(i, 1);
+legend.append('rect')
+  .attr('width', legendRectSize)
+  .attr('height', legendRectSize)
+  .style('fill', color)
+  .style('stroke', color);
+
+
+legend.append('text')
+    .attr('x', legendRectSize)
+    .attr('y',  legendSpacing)
+    .text(function(d) { 
+      if (d == 'United States of America' || d == 'Canada') {
+     
+       return 'NA ' + d; 
+        }
+      else if (d == 'Sweden' || d == 'Finland' || d == 'Norway' || d == 'Denmark' || d == 'Republic of Ireland' || d == 'United Kingdom' || d == 'Netherlands' || d == 'Belgium' || d == 'Germany' || d == 'Luxembourg'|| d == 'France' || d == 'Switzerland' || d == 'Austria' || d == 'Italy' || d == 'Spain' || d == 'Russia' || d == 'Turkey' ) {
+        return 'EU ' + d;
       }
-      displayRadar();
-  }}
-  // function for dsiplayng a new data onto radar chart
-  function displayRadar(){
-    if (finalData == 0) {
-      //colorArray.pop();
-      colorIndex--;
-    }
-    svg.selectAll("g").remove();
-    svg.append('g').datum(finalData).call(chart);
-  }
-  // display the buttons
-  function displayData(data) {
-      var button = $('<button type="button"><li id="buttonlist"><a data-country="' + data + '" data-action="1" class="tag" id="button">' + data + '</a></li></button>');
-      button.appendTo('#buttons');
-  }
+      else if (d == 'Brazil') {
+        return 'SA ' + d;
+      }
+      else if (d == 'Egypt' || d == 'Israel' || d == 'South Africa'){
+        return 'AF ' + d;
+      }
+      else if(d == 'China' || d == 'South Korea' || d == 'Japan' || d == 'Hong Kong' || d== 'Taiwan' || d == 'Singapore'){
+        return 'AS ' + d;
+      }
+      else if (d == 'Australia' || d == 'New Zealand'){
+        return 'OC' + d;
+      }
+    });
+});
+
+function position(d) {
+  var v = dragging[d];
+  return v == null ? x(d) : v;
+}
+
+function transition(g) {
+  return g.transition().duration(500);
+}
+
+// Returns the path for a given data point.
+function path(d) {
+  return line(dimensions.map(function(p) { return [position(p), y[p](d[p])]; }));
+}
+
+function brushstart() {
+  d3.event.sourceEvent.stopPropagation();
+}
+
+// Handles a brush event, toggling the display of foreground lines.
+function brush() {
+  var actives = dimensions.filter(function(p) { return !y[p].brush.empty(); }),
+      extents = actives.map(function(p) { return y[p].brush.extent(); });
+  foreground.style("display", function(d) {
+    return actives.every(function(p, i) {
+      return extents[i][0] <= d[p] && d[p] <= extents[i][1];
+    }) ? null : "none";
+  });
+}
+
 </script>
-</html>

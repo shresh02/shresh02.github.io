@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+  <!-- <link rel="stylesheet" href="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.css"> -->
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+<!--   <link rel="stylesheet" href="src/radar-chart.css">
+  <link rel="stylesheet" href="src/radar-main.css">
+  <link rel="stylesheet" href="src/pc-style.css"> -->
+  <link rel="shortcut icon" href=http://www.freshdesignweb.com/wp-content/themes/fv28/images/icon.ico />
+  <link rel="stylesheet" type="text/css" href="style.css" media="all" />
+  <script type="text/javascript" src="src/radar-chart.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script src="http://d3js.org/d3.v3.js"></script>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+  <link rel="stylesheet" href="src/radar-chart.css">
+  <link rel="stylesheet" href="src/radar-main.css">
+  <link rel="shortcut icon" href=http://www.freshdesignweb.com/wp-content/themes/fv28/images/icon.ico />
+  <link rel="stylesheet" type="text/css" href="style.css" media="all" />
+  <script type="text/javascript" src="src/radar-chart.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script src="http://d3js.org/d3.v3.js"></script>
+  <!-- // <script src="https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.js"></script> -->
+
+<style>
+/* code for this section from D3 examples in class */
+body {
+  padding: 20px;
+}
+</style>
+
+<style>
+h1{
+  font-family: 'Oswald', tahoma;
+  font-size: 20px;
+  margin-top: 50px;
+  margin-left: 100px;
+  margin-bottom: 3px;
+}
+
+h5{
+  font-family: 'Oswald', tahoma;
+  font-size: 15px;
+  margin-top: 2px;
+  margin-left: 100px;
+  display: inline-block;
+}
+
+.radar-chart .area {
+  fill-opacity: 0.7;
+}
+.radar-chart.focus .area {
+  fill-opacity: 0.3;
+}
+.radar-chart.focus .area.focused {
+  fill-opacity: 0.9;
+}
+
+/*started as a column instead of row, hence name, but this is a container for mouseover pills*/
+#slide_col{
+  width: 885px;
+  margin-left: 100px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+
+.active{
+  background-color: white;
+}
+
+/*changes color of pills on hover*/
+/*div.year:hover{
+  background-color: white;
+}*/
+
+button{
+  display: inline-block;
+  font-family: 'Oswald', tahoma;
+  cursor: pointer;
+  margin: 1px;
+  border-radius: 2px;
+  text-decoration: none;
+  padding: 5px;
+  font-size: 15px;
+  background-color: #FFF;
+  border: 0px solid white;
+}
+
+button:hover{
+  background-color: #5d88f4;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="http://d3js.org/d3.v3.js"></script>
+<!-- <script src="https://rawgit.com/alangrafu/radar-chart-d3/master/src/radar-chart.min.js"></script> -->
+
+
+<h1>Radar Chart by Michelle and Shrestha</h1>
+  <h5> We have calculated the average scores of the schools within each country, from 2011-2016.
+    <br> You can add a country by clicking on the buttons below
+    <br> For best results, view in chrome and remove countries in the same order you added them.</h5>
+  <!-- display all buttons here -->
+  <div id="buttons"><button><li id="refresh"><a data-country= data-action="1" class="tag" type="button" id="button">Refresh</a></li></button><br></div><br>
+  <!-- for radar chart -->
+  <div class='chart-container'></div></br></br>
+
+
+</body>
+
+<script>
+/* code for this section from GitOnion example and bl.oc example*/
+  // setting the default configuration for radar
+  RadarChart.defaultConfig.color = function(i) { c = colorArray ; return c[i];}
+  //var colorScale = d3.scale.category20();
+  //RadarChart.defaultConfig.colors = colorScale;
+  RadarChart.defaultConfig.radius = 3;
+  RadarChart.defaultConfig.w = 450;
+  RadarChart.defaultConfig.h = 450;
+  RadarChart.defaultConfig.levels = 10;
+  RadarChart.defaultConfig.tooltipFormatClass = function(d){
+    // console.log(d)
+    var string = String(d.className) + ", " + String(d.axes[0].axis) + ":" + String(d.axes[0].value) + ", " + String(d.axes[1].axis) + ":" + String(d.axes[1].value) + ", " + String(d.axes[2].axis) + ":" + String(d.axes[2].value) + ", " + String(d.axes[3].axis) + ":" + String(d.axes[3].value) + ", " + String(d.axes[4].axis) + ":" + String(d.axes[4].value);
+    return string
+  };
+
+  // declaring needed variables
+  var colorArray = [];
+  var colorDict = {};
+  var radar_data = [];
+  var dict = {};
+  var finalData = [];
+  var chart = RadarChart.chart();
+  var cfg = chart.config(); // retrieve default config
+  var svg = d3.select('body').append('svg').classed('svg', 1).attr('width', cfg.w + 50).attr('height', cfg.h + cfg.h / 4);
+  var colorIndex = 0;
+  // read the file when document is ready
+  $(document).ready(function() {
+    $.ajax({
+      type: "GET",
+      url: "radardata.csv",
+      dataType: "text",
+      success: function(data) {extractData(data);}
+    });
+  });
+  // generate 50 random color
+  $(document).ready(function() {
+    for (i=0; i<50; i++)
+      colorArray.push("#" + ((1 << 24) * Math.random() | 0).toString(16))
+  });
+  //function to process csv data and prepare the data structure
+  function extractData(csv) {
+    var lines = csv.split(/\r\n|\n|\r/); //spliting lines
+    for (var i=0; i<lines.length - 1; i++) {
+        var data = lines[i].split(","); //splitting lines into elements
+        displayData(String(data[0]));
+        dict[data[0]] = i; //storing key value pair of country name and index for searches
+        var _object = {};
+        _object.className = String(data[0]);
+        axes_list = []
+        axes_list.push({ axis: "teaching", value: parseFloat(data[1])});
+        axes_list.push({ axis: "overall", value: parseFloat(data[2])});
+        axes_list.push({ axis: "research", value: parseFloat(data[3])});
+        axes_list.push({ axis: "citations", value: parseFloat(data[4])});
+        axes_list.push({ axis: "income", value: parseFloat(data[5])});
+        _object.axes = axes_list
+        radar_data.push(_object)
+    }
+  }
+  //take action when user clicks on buttons
+  $("#buttons").on('click', '#button', function() {
+      if (this.getAttribute("data-action") == "1") {
+        $(this).css('color', 'white');
+        addRadar(this.getAttribute("data-country"));
+        // colorDict[$(this).text()] = colorIndex;
+        //colorArray.push(String($("polygon")[finalData.length - 1 ].getAttribute('style').substring(8, 25)));
+        // index = colorDict[$(this).text()]
+        $(this).css('background-color', colorArray[colorIndex]);
+        colorIndex++;
+        this.setAttribute("data-action", "2");
+      } else {
+        $(this).css('background-color', '#f2f2f3');
+        $(this).css('color', '#778187');
+        // $("a").each(function(){
+        //   alert($(this).children().css('background-color)');
+        //   $(this).children().css('background-color', colorArray[$(this).text()]);
+        // });
+        removeRadar(this.getAttribute("data-country"));
+        //colorArray.pop();
+        this.setAttribute('data-action', "1");
+        colorIndex--;
+      }
+  });
+
+  // refresh buttons for user to refresh
+  $("#refresh").on('click', '#button', function() {
+    location.reload();
+  });
+  // function for adding a new data onto radar chart
+  function addRadar(country) {
+    index = dict[country];
+    finalData.push(radar_data[index])
+    displayRadar();
+  }
+  // function for removing a new data onto radar chart
+  function removeRadar(country) {
+    for (i=0; i< finalData.length; i++) {
+      if (finalData[i].className == country) {
+        finalData.splice(i, 1);
+      }
+      displayRadar();
+  }}
+  // function for dsiplayng a new data onto radar chart
+  function displayRadar(){
+    if (finalData == 0) {
+      //colorArray.pop();
+      colorIndex--;
+    }
+    svg.selectAll("g").remove();
+    svg.append('g').datum(finalData).call(chart);
+  }
+  // display the buttons
+  function displayData(data) {
+      var button = $('<button type="button"><li id="buttonlist"><a data-country="' + data + '" data-action="1" class="tag" id="button">' + data + '</a></li></button>');
+      button.appendTo('#buttons');
+  }
+</script>
+</html>

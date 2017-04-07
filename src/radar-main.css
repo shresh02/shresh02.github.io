@@ -1,0 +1,115 @@
+
+h1, p {
+  color: black;
+  font-family: 'Oswald', tahoma;
+  text-align: left;
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.radar-chart .level {
+  stroke: gray;
+  stroke-width: 0.5;
+}
+
+.radar-chart .axis line {
+  stroke: gray;
+  stroke-width: 1;
+}
+
+.radar-chart .axis .legend {
+  font-family: 'Avenir Next',AvenirNextLTW01-Regular,Helvetica,Arial,sans-serif;
+  font-size: 12px;
+}
+
+.radar-chart .axis .legend.left {
+  fill: black;
+  text-anchor: end;
+  font-size: 13px;
+}
+.radar-chart .axis .legend.middle {
+  fill: black;
+  text-anchor: middle;
+  font-size: 13px;
+}
+.radar-chart .axis .legend.right {
+  fill: black;
+  text-anchor: start;
+  font-size: 13px;
+}
+
+.radar-chart .area {
+  fill-opacity: 0.7;
+}
+.radar-chart.focus .area {
+  fill-opacity: 0.3;
+}
+.radar-chart.focus .area.focused {
+  fill-opacity: 0.9;
+}
+
+.backdrop {
+  background-color: #1A1A1A;
+}
+.svg .chart-container {
+  display: inline-block;
+  float: left;
+}
+
+#buttons {
+  padding-top: 100px;
+  float: right;
+  width: 50%;
+}
+#buttonlist {
+  display: inline-block;
+  padding: 1px;
+}
+
+.radar-chart .tooltip {
+  font-family: 'Oswald', tahoma;
+  font-size: 15px;
+  transition: opacity 200ms;
+  opacity: 0;
+  color: white;
+}
+
+.svg {
+  padding: 0px 20px 20px 100px;
+}
+
+.tag:hover,.tabs-link:hover{
+  color:gray;background:#20aae5;text-decoration:none;text-shadow:0 1px rgba(0,0,0,0.15);outline:none
+}
+.tag:active,.tabs-link:active{
+  padding-bottom:2px;border-top:1px solid gray;-webkit-box-shadow:inset 0 -2px rgba(0,0,0,0.1),0 1px rgba(0,0,0,0.05);box-shadow:inset 0 -2px rgba(0,0,0,0.1),0 1px rgba(0,0,0,0.05)
+}
+
+#buttons>#buttonlist>.clicked {
+  background-color: #20aae5;
+}
+
+a, a:hover,a:focus{color:#59b329;text-decoration:none;outline:none}
+
+ul,ol,li{display:block;margin:0;padding:0}ol,ul{list-style:none}
+
+.tags-heading{height:2em;line-height:2em;margin-bottom:1em}
+
+.tags-heading>h4{margin:0;line-height:inherit}
+
+.tags-toggle{display:none;text-align:center;font-weight:bold}
+
+.tags-toggle:before{content:"\e010";margin-right:.5em}
+
+.tags-list{overflow:hidden;line-height:1.5em}
+
+.tags-list>li{float:left;margin:0 .8em .8em 0}
+
+.tag{display:block;padding-left:.6em;padding-right:.6em;line-height:inherit;font-size:.9375em;font-weight:normal;color:#778187;background:#f2f2f3}
+
+#refresh {
+  width: 80px;
+  font-size: 20px;
+}

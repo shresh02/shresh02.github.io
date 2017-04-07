@@ -1,0 +1,137 @@
+svg {
+  font-family: 'Avenir Next',AvenirNextLTW01-Regular,Helvetica,Arial,sans-serif;
+}
+
+h1{
+  font-family: 'Avenir Next',AvenirNextLTW01-Regular,Helvetica,Arial,sans-serif;
+  font-size: 20px;
+  margin-top: 50px;
+  margin-bottom: 3px;
+}
+
+h5{
+  font-family: 'Avenir Next',AvenirNextLTW01-Regular,Helvetica,Arial,sans-serif;
+  font-size: 15px;
+  margin-top: 2px;
+  margin-left: 100px;
+  display: inline-block;
+}
+
+button{
+  display: inline-block;
+  font-family: 'Oswald', tahoma;
+  cursor: pointer;
+  margin: 1px;
+  border-radius: 2px;
+  text-decoration: none;
+  padding: 5px;
+  font-size: 15px;
+  background-color: #f2f2f3;
+  border: 1px solid black;
+}
+
+button:hover{
+  background-color: #5d88f4;
+}
+
+.background path {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+.foreground path {
+  fill: none;
+  stroke: steelblue;
+}
+
+.foreground .NA {
+  fill: none;
+  stroke: orange;
+}
+
+.foreground .SA {
+  fill: none;
+  stroke: lime;
+}
+
+.foreground .EU {
+  fill: none;
+  stroke: skyblue;
+}
+
+.foreground .AF {
+  fill: none;
+  stroke: Yellow;
+}
+
+.foreground .OC {
+  fill: none;
+  stroke: Purple;
+}
+
+.foreground .AA {
+  fill: none;
+  stroke: red;
+}
+
+.year_button {
+  width: 400px;
+  margin-left: 570px;
+  display: block;
+}
+.brush .extent {
+  fill-opacity: .3;
+  stroke: #fff;
+  shape-rendering: crispEdges;
+}
+
+.axis line,
+.axis path {
+  fill: none;
+  stroke: white;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  cursor: move;
+  stroke: white;
+
+}
+
+.barrect {
+  fill: white;
+  stroke: gray;
+  stroke-width: 0.5;
+  stroke-opacity:0.5;
+}
+
+
+.bartext {
+  fill: #000;
+  font-weight: 200%;
+  font-size : .9em;
+  font-family: 'Oswald', tahoma;
+}
+
+.counter {
+  fill: #B2B2B2;
+  font-weight: 200%;
+  font-size : 2.3em;
+  font-family: 'Oswald', tahoma;
+}
+
+.active{
+  background-color: white;
+}
+
+svg+div {
+  margin-left: 300px;
+  color: white;
+}
+svg+div>div {
+  display: inline-block;
+  min-width: 50px;
+  min-height: 1em;
+  margin-left: 5px;
+}

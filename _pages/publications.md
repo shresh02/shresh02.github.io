@@ -25,13 +25,13 @@ You can also find my articles on my [Google Scholar](https://scholar.google.com/
 
   Alexey Skrynnik, Zoya Volovikova, Marc-Alexandre Cote, Anton Voronov, Artem Zholus, Negar Arabzadeh, **Shrestha Mohanty**, Milagro Teruel, et al.
 
-  arXiv Pre-print 2022
+  **arXiv Pre-print** 2022
 
 * [IGLU 2022: Interactive Grounded Language Understanding in a Collaborative Environment at NeurIPS 2022](https://arxiv.org/pdf/2205.13771.pdf)
 
   Julia Kiseleva, Alexey Skrynnik, Artem Zholus, Shrestha Mohanty, Negar Arabzadeh, Marc-Alexandre Cote, Mohammad Aliannejadi, Milagro Teruel et al.
 
-  arXiv Pre-print 2022
+  **arXiv Pre-print** 2022
 
 2021
 ------

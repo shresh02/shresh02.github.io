@@ -9,7 +9,4 @@ redirect_from:
 
 {% include base_path %}
 
-CV
-======
-
 Please refer to my CV [here](https://drive.google.com/file/d/1W4ptNhxFCMN-m5yAd54giLD4T_l0PjZi/view?usp=sharing)

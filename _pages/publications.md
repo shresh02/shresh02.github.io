@@ -40,6 +40,3 @@ You can also find my articles on my [Google Scholar](https://scholar.google.com/
   Al-Rahim Habib, Yixi Xu, Kris Bock, **Shrestha Mohanty**, Tina Sederholm, William B Weeks, Rahul Dodhia, et al.
   **Pre-print** 2022
 
-
-2021
-------

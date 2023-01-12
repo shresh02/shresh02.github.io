@@ -10,7 +10,7 @@ redirect_from:
 
 
 
-Hello there!
+Hello!
 ======
 I am an Applied Scientist at Microsoft working at the intersection of Natural Language Processing, Deep Learning and Embodied AI. Within these broad areas, I am especially keen on exploring research directions which can lead to interactive systems that can communicate with humans (and other computational systems) using natural language and enhance their decision-making capabilities under uncertainties. 
 

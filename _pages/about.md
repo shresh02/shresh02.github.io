@@ -12,7 +12,7 @@ redirect_from:
 
 Hello!
 ======
-I am an Applied Scientist at Microsoft working at the intersection of Natural Language Processing, Deep Learning and Embodied AI. Within these broad areas, I am especially keen on exploring research directions which can lead to interactive systems that can communicate with humans (and other computational systems) using natural language and multi-modal approaches to enhance their decision-making capabilities under uncertainties. 
+I am an Applied Scientist at Microsoft working at the intersection of Natural Language Processing, Deep Learning and Embodied AI. Within these broad areas, I am especially keen on exploring research directions which can lead to interactive systems that can communicate with humans (and other computational systems) using natural language and multi-modal inputs to enhance their decision-making capabilities under uncertainties. 
 
 I am in the core organizing team for the NeurIPS 2021 and 2022 competition on Interactive Grounded Language Understanding in a Collaborative Environment [(IGLU)](https://www.iglu-contest.net/) competition. The goal of this competition is to build embodied agents that learn to solve a task while provided with grounded natural language instructions.
 

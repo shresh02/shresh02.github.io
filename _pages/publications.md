@@ -7,6 +7,15 @@ author_profile: true
 
 You can also find my articles on my [Google Scholar](https://scholar.google.com/citations?user=Hu349EgAAAAJ&hl=en) profile
 
+2023
+------
+
+* [Transforming Human-Centered AI Collaboration: Redefining Embodied Agents Capabilities through Interactive Grounded Language Instructions](https://arxiv.org/pdf/2305.10783.pdf)
+  
+  **Shrestha Mohanty\***, Negar Arabzadeh\*, Artem Zholus, Milagro Teruel, Ahmed Awadallah, Yuxuan Sun, Kavya Srinet, Arthur Szlam, Julia Kiseleva
+  
+  **Paper in submission**
+
 
 2022
 ------

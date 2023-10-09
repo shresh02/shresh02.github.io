@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Shrestha Mohanty"
 title_separator          : "-"
 name                     : &name "Shrestha Mohanty"
-description              : &description "Applied Scientist at Microsoft"
+description              : &description "Graduate Student Researcher at MIT"
 url                      : https://shresh02.github.io 
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "shresh02.github.io"

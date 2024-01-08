@@ -14,7 +14,7 @@ You can also find my articles on my [Google Scholar](https://scholar.google.com/
   
   **Shrestha Mohanty\***, Negar Arabzadeh\*, Artem Zholus, Milagro Teruel, Ahmed Awadallah, Yuxuan Sun, Kavya Srinet, Arthur Szlam, Julia Kiseleva
   
-  **In submission at EACL**
+  **In submission at NAACL**
 
 
 2022

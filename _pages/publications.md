@@ -7,12 +7,38 @@ author_profile: true
 
 You can also find my articles on my [Google Scholar](https://scholar.google.com/citations?user=Hu349EgAAAAJ&hl=en) profile
 
-2023
+2024
 ------
 
+* [On the Relationship between Truth and Political Bias in Language Models](https://arxiv.org/pdf/2409.05283)
+
+  Suyash Fulay, William Brannon, **Shrestha Mohanty**, Cassandra Overney, Elinor Poole-Dayan, Deb Roy, Jad Kabbara
+  
+  **EMNLP Main**, 2024
+
+* [IDAT: A Multi-Modal Dataset and Toolkit for Building and Evaluating Interactive Task-Solving Agents](https://arxiv.org/pdf/2407.08898)
+
+  **Shrestha Mohanty**, Negar Arabzadeh, Andrea Tupini, Yuxuan Sun, Alexey Skrynnik, Artem Zholus, Marc-Alexandre Côté, Julia Kiseleva
+
+* [Consent in crisis: the rapid decline of the AI data commons](https://arxiv.org/pdf/2407.14933)
+
+  Shayne Longpre, Robert Mahari, Ariel Lee, Campbell Lund, Hamidah Oderinwale, William Brannon, Nayan Saxena, Naana Obeng-Marnu, Tobin South, Cole Hunter, Kevin Klyman, Christopher Klamm, Hailey Schoelkopf, Nikhil Singh, Manuel Cherep, Ahmad Anis, An Dinh, Caroline Chitongo, Da Yin, Damien Sileo, Deividas Mataciunas, Diganta Misra, Emad Alghamdi, Enrico Shippole, Jianguo Zhang, Joanna Materzynska, Kun Qian, Kush Tiwary, Lester Miranda, Manan Dey, Minnie Liang, Mohammed Hamdy, Niklas Muennighoff, Seonghyeon Ye, Seungone Kim, Shrestha Mohanty, Vipul Gupta, Vivek Sharma, Vu Minh Chien, Xuhui Zhou, Yizhi Li, Caiming Xiong, Luis Villa, Stella Biderman, Hanlin Li, Daphne Ippolito, Sara Hooker, Jad Kabbara, Sandy Pentland
+
+  **NeurIPS**, 2024
+
+  
+
+2023
+------
 * [Transforming Human-Centered AI Collaboration: Redefining Embodied Agents Capabilities through Interactive Grounded Language Instructions](https://arxiv.org/pdf/2305.10783.pdf)
   
   **Shrestha Mohanty\***, Negar Arabzadeh\*, Artem Zholus, Milagro Teruel, Ahmed Awadallah, Yuxuan Sun, Kavya Srinet, Arthur Szlam, Julia Kiseleva
+
+* [IGLU 2022: Interactive Grounded Language Understanding in a Collaborative Environment at NeurIPS 2022](https://arxiv.org/pdf/2205.13771.pdf)
+  
+  Julia Kiseleva, Alexey Skrynnik, Artem Zholus, **Shrestha Mohanty**, Negar Arabzadeh, Marc-Alexandre Cote, Mohammad Aliannejadi, Milagro Teruel et al.
+
+  **NeurIPS 2022 Competition Track**, 2022
 
 
 2022
@@ -35,13 +61,6 @@ You can also find my articles on my [Google Scholar](https://scholar.google.com/
 * [Learning to Solve Voxel Building Embodied Tasks from Pixels and Natural Language Instructions](https://arxiv.org/pdf/2211.00688.pdf)
 
   Alexey Skrynnik, Zoya Volovikova, Marc-Alexandre Cote, Anton Voronov, Artem Zholus, Negar Arabzadeh, **Shrestha Mohanty**, Milagro Teruel, et al.
-
-  **arXiv Pre-print**, 2022
-
-
-* [IGLU 2022: Interactive Grounded Language Understanding in a Collaborative Environment at NeurIPS 2022](https://arxiv.org/pdf/2205.13771.pdf)
-  
-  Julia Kiseleva, Alexey Skrynnik, Artem Zholus, **Shrestha Mohanty**, Negar Arabzadeh, Marc-Alexandre Cote, Mohammad Aliannejadi, Milagro Teruel et al.
 
   **arXiv Pre-print**, 2022
   

@@ -43,7 +43,7 @@ You can also find my articles on my [Google Scholar](https://scholar.google.com/
 
 * [IGLU 2022: Interactive Grounded Language Understanding in a Collaborative Environment at NeurIPS 2022](https://arxiv.org/pdf/2205.13771.pdf)
 
-    **NeurIPS 2022 Competition Track**
+    **NeurIPS 2022** Competition Track
   
    Julia Kiseleva, Alexey Skrynnik, Artem Zholus, **Shrestha Mohanty**, Negar Arabzadeh, Marc-Alexandre Cote, Mohammad Aliannejadi, Milagro Teruel et al.
 

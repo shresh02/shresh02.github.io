@@ -10,6 +10,14 @@ You can also find my articles on my [Google Scholar](https://scholar.google.com/
 2024
 ------
 
+* Bridging Context Gaps: Enhancing Comprehension in Long-Form Social
+Conversations Through Contextualized Excerpts
+
+**Shrestha Mohanty**, Sarah Xuan, Jacob Jobraeel, Jad Kabbara, Anurag Kumar, Deb Roy
+
+In submission to COLING 2025
+
+
 * [On the Relationship between Truth and Political Bias in Language Models](https://arxiv.org/pdf/2409.05283)
 
   Suyash Fulay, William Brannon, **Shrestha Mohanty**, Cassandra Overney, Elinor Poole-Dayan, Deb Roy, Jad Kabbara

@@ -10,11 +10,10 @@ You can also find my articles on my [Google Scholar](https://scholar.google.com/
 2024
 ------
 
-* Bridging Context Gaps: Enhancing Comprehension in Long-Form Social
-Conversations Through Contextualized Excerpts
-In submission to COLING 2025
+* Bridging Context Gaps: Enhancing Comprehension in Long-Form Social Conversations Through Contextualized Excerpts
+   In submission to COLING 2025
 
-**Shrestha Mohanty**, Sarah Xuan, Jacob Jobraeel, Jad Kabbara, Anurag Kumar, Deb Roy
+   **Shrestha Mohanty**, Sarah Xuan, Jacob Jobraeel, Jad Kabbara, Anurag Kumar, Deb Roy
 
 
 

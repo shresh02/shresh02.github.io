@@ -10,7 +10,7 @@ You can also find my articles on my [Google Scholar](https://scholar.google.com/
 2024
 ------
 
-* Bridging Context Gaps: Enhancing Comprehension in Long-Form Social Conversations Through Contextualized Excerpts
+* **Bridging Context Gaps: Enhancing Comprehension in Long-Form Social Conversations Through Contextualized Excerpts**
 
   In submission to COLING
 

@@ -12,7 +12,7 @@ redirect_from:
 
 Hello!
 ======
-I am a graduate student researcher at the Massachusetts Institute of Technology advised by Professor [Deb Roy](https://www.media.mit.edu/people/dkroy/overview/){:target="_blank"}. My research interests are at the intersection of natural language processing and human-centered AI. Recent works include exploring truth alignment in large language models and developing socially aware models.
+I am a graduate student researcher at the Massachusetts Institute of Technology advised by Professor [Deb Roy](https://www.media.mit.edu/people/dkroy/overview/){:target="_blank"}. My research interests are at the intersection of natural language processing and human-centered AI. My recent works include exploring truth alignment in large language models and developing socially aware models.
 
 Previously, I was an Applied Scientist at Microsoft, where I worked in the areas of multilingual content understanding in News, and my research focused on interactive grounded language understanding for agents in a collaborative environment. I was a co-organizer for the NeurIPS 2021 and 2022 competition [(IGLU)](https://www.iglu-contest.net/){:target="_blank"}. I obtained my master's from University of California, Berkeley where my research delved into ML-driven methods to develop strategies for natural disaster risk reduction advised by Professor [Ken Goldberg](https://www2.eecs.berkeley.edu/Faculty/Homepages/goldberg.html){:target="_blank"} and Professor [Brandie Nonnecke](https://nonnecke.com/){:target="_blank"}, and explainable Machine Learning in public policy advised by Professor [David Bamman](https://people.ischool.berkeley.edu/~dbamman/){:target="_blank"}.
 
